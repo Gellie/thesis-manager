@@ -17,8 +17,6 @@ class Student(ndb.Model):
     first_name = ndb.StringProperty(indexed=True)
     last_name = ndb.StringProperty(indexed=True)
     age = ndb.IntegerProperty()
-    year = ndb.IntegerProperty()
-    course = ndb.StringProperty(indexed=True)
     date = ndb.DateTimeProperty(auto_now_add=True)
 
 
