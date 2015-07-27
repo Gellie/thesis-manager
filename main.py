@@ -52,21 +52,6 @@ class CreateStudentPage(webapp2.RequestHandler):
         student.put()
         self.redirect('/success')
 
-class UpdatePage(webapp2.RequestHandler):
-    def get(self):
-        template = JINJA_ENVIRONMENT.get_template('update_page.html')
-        self.response.write(template.render())
-
-    def post(self):
-        student = Student()
-        student.first_name = self.request.get('first_name')
-        student.last_name = self.request.get('last_name')
-        student.age = int(self.request.get('age'))
-        student.course = self.request.get('course')
-        student.year = int(self.request.get('year'))
-        student.put()
-        self.redirect('/success')
-
 
 class StudentListPage(webapp2.RequestHandler):
     def get(self):
@@ -107,7 +92,6 @@ app = webapp2.WSGIApplication([
     ('/student/delete/(.*)', DeleteStudent),
     ('/student/edit/(.*)', EditStudent),
     ('/student/list', StudentListPage),
-    ('/student/update', UpdatePage),
     ('/about', AboutPage),
     ('/success', SuccessPage),
     ('/', MainPage)
