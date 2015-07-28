@@ -17,25 +17,27 @@ class Student(ndb.Model):
     first_name = ndb.StringProperty(indexed=True)
     last_name = ndb.StringProperty(indexed=True)
     age = ndb.IntegerProperty()
+    year = ndb.IntegerProperty()
+    course = ndb.StringProperty(indexed=True)
     date = ndb.DateTimeProperty(auto_now_add=True)
 
 
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/html'
-        self.response.write('<h1>Students CRUD</h1>')
+        template = JINJA_ENVIRONMENT.get_template('mainpage.html')
+        self.response.write(template.render())
 
 
 class AboutPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Welcome to my site\'s about page!')
+        template = JINJA_ENVIRONMENT.get_template('about.html')
+        self.response.write(template.render())
 
 class SuccessPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/html'
-        self.response.write('Success! <a href="/student/list">view students</a>')
+        template = JINJA_ENVIRONMENT.get_template('success.html')
+        self.response.write(template.render())
 
 class CreateStudentPage(webapp2.RequestHandler):
     def get(self):
@@ -47,6 +49,8 @@ class CreateStudentPage(webapp2.RequestHandler):
         student.first_name = self.request.get('first_name')
         student.last_name = self.request.get('last_name')
         student.age = int(self.request.get('age'))
+        student.course = self.request.get('course')
+        student.yr_section = (self.request.get('yr_section'))
         student.put()
         self.redirect('/success')
 
@@ -82,6 +86,8 @@ class EditStudent(webapp2.RequestHandler):
         student.first_name = self.request.get('first_name')
         student.last_name = self.request.get('last_name')
         student.age = int(self.request.get('age'))
+        student.course = self.request.get('course')
+        student.yr_section= (self.request.get('yr_section'))
         student.put()
         self.redirect('/success')
 
