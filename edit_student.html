@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Edit Student</title>
 </head>
-<body>
+<body bgcolor="#DDA0DD" align="center" >
 <h1>Edit Student</h1>
 <form action='/student/edit/{{student_list.key.id()}}' method='post'>
     <input type='text' name='first_name' placeholder='first name' value='{{student_list.first_name}}'/>
     <input type='text' name='last_name' placeholder='last name' value='{{student_list.last_name}}'/>
-    <input type='text' name='age' placeholder='age' value='{{student_list.age}}'/>
+    <input type='text' name='age' placeholder='age' value='{{student_list.age}}'/><br><br>
+    <input type='text' name='course' placeholder='course' value='{{student_list.last_course}}'/>
+    <input type='text' name='yr_section' placeholder='yr_section' value='{{student_list.yr_section}}'/><br>
+    <br>
     <input type='submit' value='Update Student'></input>
 </form>
 </body>
