@@ -1,4 +1,4 @@
-# app.yaml = application config file
+application: coe-dbms-016
 
 version: 1
 runtime: python27
@@ -7,7 +7,7 @@ threadsafe: true
 
 handlers:
 - url: /.*
-  script: main.app
+  script: coe-dbms-016.app
 
 libraries:
 - name: webapp2
